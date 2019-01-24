@@ -1,7 +1,7 @@
 const fs = require('fs')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 let cardData;
 
 fs.readFile('./data/card-data.json', 'utf8', function (err, data) {
@@ -9,7 +9,7 @@ fs.readFile('./data/card-data.json', 'utf8', function (err, data) {
 	cardData = JSON.parse(data)
 })
 
-app.get('/', (req, res) => {
+app.get('/table', (req, res) => {
 				res.set({
 							'Access-Control-Allow-Origin': ['*'],
 							'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
